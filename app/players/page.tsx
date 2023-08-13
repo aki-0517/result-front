@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import NavigationBar from '../_components/NavigationBar';
+import axios from 'axios';
+import { getPlayers } from '../container';
+import { Player } from '@/entities/dto';
 
 export default function Top() {
-  const rankings = [
-    { name: 'ユーザー1', point: 100, sail_no: 17, sex: "man" },
-    { name: 'ユーザー2', point: 90, sail_no: 17, sex: "woman" },
-    { name: 'ユーザー3', point: 85, sail_no: 17, sex: "man" },
-    // 他のランキングデータも追加
-  ];
+  // const players = [
+  //   { name: 'ユーザー1', point: 100, sail_no: 17, sex: "man" },
+  //   { name: 'ユーザー2', point: 90, sail_no: 17, sex: "woman" },
+  //   { name: 'ユーザー3', point: 85, sail_no: 17, sex: "man" },
+  //   // 他のランキングデータも追加
+  // ];
+
+
+  const [players, setPlayers] = useState<Player[]>([{ name: "", point: 0, sail_no: 0, sex: ""}])
+
+  useEffect(() => {
+    async function fetchPlayers() {
+      try {
+        const playersData = await getPlayers();
+        setPlayers(playersData) 
+      } catch (error) {
+        console.error('Error fetching players:', error);
+      }
+    }
+    console.log(players)
+    fetchPlayers();
+  }, []);
 
   return (
     <div>
@@ -25,7 +44,7 @@ export default function Top() {
               </tr>
             </thead>
             <tbody>
-              {rankings.map((user) => (
+              {players.map((user) => (
                 <tr key={user.sail_no} className="bg-blue-50">
                   <td className="py-2">{user.name}</td>
                   <td className="py-2">{user.sail_no}</td>
