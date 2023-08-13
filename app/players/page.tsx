@@ -1,6 +1,6 @@
+'use client'
 import React, { useEffect, useState } from 'react';
 import NavigationBar from '../_components/NavigationBar';
-import axios from 'axios';
 import { getPlayers } from '../container';
 import { Player } from '@/entities/dto';
 
