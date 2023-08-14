@@ -1,3 +1,4 @@
+import NavigationBar from './_components/NavigationBar'
 import './globals.css'
 import type { Metadata } from 'next'
 
@@ -13,7 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <div>{children}</div>
+      <body>
+      <NavigationBar />
+        {children}
+      </body>
     </html>
   )
 }

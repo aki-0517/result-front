@@ -7,7 +7,7 @@ export default function NavigationBar() {
         <li><Link href="/">トップ</Link></li>
         <li><Link href="/resultInput">リザルト入力</Link></li>
         <li><Link href="/edit">リザルト編集</Link></li>
-        <li><Link href="/login">ログイン</Link></li>
+        <li><Link href="/auth/email">ログイン</Link></li>
       </ul>
     </nav>
   );

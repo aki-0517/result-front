@@ -5,8 +5,6 @@ export default function Login() {
   const rankings = Array.from({ length: 50 }, (_, index) => index + 1);
 
   return (
-    <div>
-        <NavigationBar />
     <div className="min-h-screen flex items-center justify-center bg-blue-300">
       <div className="bg-white p-8 rounded-md shadow-md w-96">
         <h2 className="text-2xl mb-4">ランキング入力</h2>
@@ -41,7 +39,6 @@ export default function Login() {
           送信
         </button>
       </div>
-    </div>
     </div>
   );
 }
