@@ -1,13 +1,11 @@
 import React from 'react';
 import NavigationBar from '../_components/NavigationBar';
+import { Player } from '@/entities/dto';
 
-export default function Top() {
-  const rankings = [
-    { name: 'ユーザー1', point: 100, sail_no: 17, sex: "man" },
-    { name: 'ユーザー2', point: 90, sail_no: 17, sex: "woman" },
-    { name: 'ユーザー3', point: 85, sail_no: 17, sex: "man" },
-    // 他のランキングデータも追加
-  ];
+export default async function Top() {
+  const response = await fetch('http://localhost:3000/api');
+  if (!response.ok) throw new Error('Failed to fetch data');
+  const players: Player[] = await response.json();
 
   return (
     <div>
@@ -25,7 +23,7 @@ export default function Top() {
               </tr>
             </thead>
             <tbody>
-              {rankings.map((user) => (
+              {players.map((user) => (
                 <tr key={user.sail_no} className="bg-blue-50">
                   <td className="py-2">{user.name}</td>
                   <td className="py-2">{user.sail_no}</td>

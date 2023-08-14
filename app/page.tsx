@@ -1,27 +1,12 @@
-'use client'
-import React, { useEffect, useState } from 'react';
 import NavigationBar from './_components/NavigationBar';
 import { Player } from '@/entities/dto';
-import { getPlayers } from './container';
 
-export default function Top() {
-
-  const [players, setPlayers] = useState<Player[]>([{ name: "", point: 0, sail_no: 0, sex: ""}])
-
-  useEffect(() => {
-    async function fetchPlayers() {
-      try {
-        const playersData = await getPlayers();
-        setPlayers(playersData) 
-      } catch (error) {
-        console.error('Error fetching players:', error);
-      }
-    }
-    console.log(players)
-    fetchPlayers();
-  }, []);
-
+export default async function Top() {
   
+  const response = await fetch('http://localhost:3000/api');
+  if (!response.ok) throw new Error('Failed to fetch data');
+  const players: Player[] = await response.json();
+  console.log(players)
 
   return (
     <div>

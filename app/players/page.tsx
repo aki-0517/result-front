@@ -1,32 +1,13 @@
-'use client'
 import React, { useEffect, useState } from 'react';
 import NavigationBar from '../_components/NavigationBar';
-import { getPlayers } from '../container';
 import { Player } from '@/entities/dto';
 
-export default function Top() {
-  // const players = [
-  //   { name: 'ユーザー1', point: 100, sail_no: 17, sex: "man" },
-  //   { name: 'ユーザー2', point: 90, sail_no: 17, sex: "woman" },
-  //   { name: 'ユーザー3', point: 85, sail_no: 17, sex: "man" },
-  //   // 他のランキングデータも追加
-  // ];
+export default async function Top() {
 
 
-  const [players, setPlayers] = useState<Player[]>([{ name: "", point: 0, sail_no: 0, sex: ""}])
-
-  useEffect(() => {
-    async function fetchPlayers() {
-      try {
-        const playersData = await getPlayers();
-        setPlayers(playersData) 
-      } catch (error) {
-        console.error('Error fetching players:', error);
-      }
-    }
-    console.log(players)
-    fetchPlayers();
-  }, []);
+  const response = await fetch('http://localhost:3000/api');
+  if (!response.ok) throw new Error('Failed to fetch data');
+  const players: Player[] = await response.json();
 
   return (
     <div>
