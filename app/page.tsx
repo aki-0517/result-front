@@ -1,4 +1,3 @@
-import NavigationBar from './_components/NavigationBar';
 import { Player } from '@/entities/dto';
 
 export default async function Top() {
@@ -9,8 +8,6 @@ export default async function Top() {
   console.log(players)
 
   return (
-    <div>
-      <NavigationBar />
     <div className="p-8 bg-blue-100 text-center">
       <h1 className="text-3xl font-semibold text-blue-600 mb-6">リザルトランキング</h1>
       <div className="bg-white rounded shadow overflow-hidden">
@@ -37,7 +34,6 @@ export default async function Top() {
           </tbody>
         </table>
       </div>
-    </div>
     </div>
   );
 }

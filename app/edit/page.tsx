@@ -1,5 +1,4 @@
 import React from 'react';
-import NavigationBar from '../_components/NavigationBar';
 import { Player } from '@/entities/dto';
 
 export default async function Top() {
@@ -9,7 +8,6 @@ export default async function Top() {
 
   return (
     <div>
-      <NavigationBar />
       <div className="p-8 bg-blue-100 text-center">
         <h1 className="text-3xl font-semibold text-blue-600 mb-6">プレイヤー一覧</h1>
         <div className="bg-white rounded shadow overflow-hidden">
